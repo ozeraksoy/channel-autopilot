@@ -12,7 +12,8 @@ One pass through the routine for one channel. If several channels exist, ask whi
 2. **Publishing check** — is today's episode scheduled/published on every platform? Is the rolling window full (platforms
    with short scheduling horizons need topping up daily)? Fix gaps with `publishing`.
 3. **Buffer check** — count produced-but-unpublished episodes. If fewer than the buffer in `CHANNEL.md` (default: 7 days
-   ahead), produce the next batch with `episode-production`.
+   ahead), produce the next batch with `episode-production` (shorts) or continue the current long video with
+   `long-form-production`. A thin buffer is never a reason to publish something that fails `QUALITY.md`; report the gap instead.
 4. **Data** — after posting time, run `analytics-loop`: log numbers, explain, update takeaways and the experiment.
 5. **Audience** — run `engagement`.
 6. **Write down and report** — update "Status" in `CHANNEL.md`; give the owner a short report: what was done, the standout

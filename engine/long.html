@@ -1,0 +1,102 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:L;src:url(fonts/lilita-latin.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:L;src:url(fonts/lilita-ext.woff2);unicode-range:U+0100-024F}
+@font-face{font-family:N;font-weight:900;src:url(fonts/nunito-latin.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:N;font-weight:900;src:url(fonts/nunito-ext.woff2);unicode-range:U+0100-024F}
+@font-face{font-family:L;src:url(fonts/rubik-cyr.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:N;font-weight:900;src:url(fonts/rubik-cyr.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:L;src:url(fonts/baloo-deva.woff2);unicode-range:U+0900-097F,U+1CD0-1CFF,U+A8E0-A8FF}
+@font-face{font-family:L;src:url(fonts/lalezar-arabic.woff2);unicode-range:U+0600-06FF,U+FE70-FEFF}
+@font-face{font-family:N;font-weight:900;src:url(fonts/baloo-deva.woff2);unicode-range:U+0900-097F}
+@font-face{font-family:N;font-weight:900;src:url(fonts/lalezar-arabic.woff2);unicode-range:U+0600-06FF,U+FE70-FEFF}
+:root{--ink:#1F1A2E;--yel:#FFD23F;--cor:#FF5A5F;--teal:#23C9B6;--cream:#FFF6E0;--tom:#F03C2E}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--cream)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.scene{position:absolute;inset:0;opacity:0;display:none;overflow:hidden}
+.L{font-family:L,N,sans-serif;color:#fff;-webkit-text-stroke:12px var(--ink);paint-order:stroke fill;text-transform:uppercase;letter-spacing:.01em}
+.T{font-family:L,N,sans-serif;color:var(--ink)}
+.B{font-family:N,sans-serif;font-weight:900;color:var(--ink)}
+.NAT{font-weight:900;font-family:L,N,'Noto Sans CJK JP','Noto Sans CJK SC','Noto Sans CJK KR','Noto Sans Devanagari','Noto Sans Arabic',sans-serif}
+.abs{position:absolute}.cen{left:0;right:0;text-align:center}
+.chip{display:inline-block;font-family:L;font-size:40px;color:var(--ink);background:var(--yel);border:6px solid var(--ink);border-radius:50px;padding:6px 28px 3px;white-space:nowrap;box-shadow:0 6px 0 var(--ink)}
+.card{background:#fff;border:7px solid var(--ink);border-radius:36px;box-shadow:0 10px 0 var(--ink)}
+#brand{position:absolute;top:44px;left:56px;font-family:L;font-size:34px;color:var(--ink);background:#fff;border:5px solid var(--ink);border-radius:40px;padding:5px 22px 2px;box-shadow:0 5px 0 var(--ink);z-index:50}
+#brand b{color:var(--cor);font-weight:400}
+#chap{position:absolute;top:44px;right:56px;font-family:L;font-size:34px;color:#fff;background:var(--ink);border-radius:40px;padding:8px 24px 4px;z-index:50;opacity:0}
+#cap{position:absolute;left:160px;right:160px;top:930px;text-align:center;font-size:58px;line-height:1.05;z-index:60;-webkit-text-stroke:9px var(--ink)}
+#cap span{display:inline-block;margin:0 8px}
+#bar{position:absolute;left:0;bottom:0;height:10px;background:var(--cor);z-index:70}
+#ticks{position:absolute;left:0;right:0;bottom:0;height:10px;z-index:71}
+#ticks i{position:absolute;top:0;width:4px;height:10px;background:var(--ink)}
+#card{position:absolute;inset:0;z-index:80;display:none;align-items:center;justify-content:center;flex-direction:column;background:var(--ink)}
+.bl{display:flex;align-items:flex-start;gap:22px;margin:18px 0;font-size:52px;line-height:1.15}
+.bl i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--cor);border:5px solid var(--ink);margin-top:16px}
+</style></head>
+<body><div id="stage"><div id="scenes"></div>
+<div id="brand"></div><div id="chap"></div><div id="cap" class="L"></div><div id="ticks"></div><div id="bar"></div>
+<div id="card"><div class="chip" id="cardN" style="font-size:48px"></div><div class="L" id="cardT" style="font-size:130px;margin-top:30px;text-align:center;max-width:1600px;line-height:1.05"></div></div>
+</div>
+<script src="flags.js"></script><script src="characters.js"></script>
+<script>
+const TIMING=__TIMING__; const EP=__EP__; const THEME=__THEME__;
+// Long-form engine (1920x1080). ep.json: {"format":"long","scenes":[{"id":"intro","segs":["c1","c2"]},...],"chapters":[{"title":"…","at":"c3"}],"pause":{"c3":1.6}}
+// story.js: const STORY={scenes:{intro:{bg,html,init(),render(t,lt,p)}}}  (t = absolute time, lt = seconds since the scene started, p = 0..1 through the scene)
+const W=TIMING.words, OFF=TIMING.off, SEGEND=TIMING.segend||{}, END=TIMING.end;
+const norm=w=>w.toLowerCase().normalize('NFC').replace(/[.,!?¿¡:;"'“”‘’…()\-]/g,'');
+function T(s,w,n=0){const m=W.filter(x=>x.s===s&&norm(x.w)===norm(w));if(!m[n]){console.error('missing',s,w,n);return OFF[s]}return m[n].t0}
+function AT(k){if(typeof k==='number')return k;const [s,w,n]=k.split(':');return w===undefined?OFF[s]:T(s,w,+(n||0))}
+const SEND=s=>SEGEND[s]!==undefined?SEGEND[s]:OFF[s]+1;
+const COL={yel:'var(--yel)',cor:'var(--cor)',teal:'var(--teal)',tom:'var(--tom)',w:'#fff',ink:'var(--ink)'};
+const TH=Object.assign({brand:{a:'MY',b:'CHANNEL'},handle:'@mychannel',labels:{},colors:{},character:{},cta:{}},THEME||{});
+(function(){const c=TH.colors||{};const map={ink:'--ink',accent:'--yel',accent2:'--cor',accent3:'--teal',paper:'--cream'};for(const k in map)if(c[k])document.documentElement.style.setProperty(map[k],c[k]);})();
+const HI=(TH.colors&&TH.colors.accent)||'#FFD23F';
+const CH=o=>Object.assign({},TH.character||{},o||{});
+$('brand').innerHTML=(TH.brand.a||'')+(TH.brand.b?' <b>'+TH.brand.b+'</b>':'');
+// ---- reusable building blocks for scenes -------------------------------------------------
+// bullets('id', [{text, at:'c4:word'}], {left,top,width,size}) -> html; animate with bulletsRender('id', t)
+const _BL={};
+function bullets(id,items,o={}){_BL[id]=items.map(i=>AT(i.at));return `<div class="abs B" id="${id}" style="left:${o.left||140}px;top:${o.top||300}px;width:${o.width||900}px">${items.map((i,k)=>`<div class="bl" id="${id}_${k}" style="font-size:${o.size||52}px"><i></i><span>${i.text}</span></div>`).join('')}</div>`}
+function bulletsRender(id,t){(_BL[id]||[]).forEach((a,k)=>sty(id+'_'+k,{opacity:t>=a?1:0,transform:`translateX(${(1-pop(t,a,.3))*-60}px)`}))}
+// bigText('id', [["LINE","yel",150],…], {top}) -> centred display lines; animate with linesRender('id', t, [at,…])
+function bigText(id,lines,o={}){return `<div class="abs cen" id="${id}" style="top:${o.top||260}px">${lines.map(([x,c,sz],k)=>`<div class="L NAT" id="${id}_${k}" style="font-size:${sz||140}px;color:${COL[c]||'#fff'};line-height:1.05">${x}</div>`).join('')}</div>`}
+function linesRender(id,t,ats){ats.forEach((a,k)=>{a=AT(a);sty(id+'_'+k,{opacity:t>=a?1:0,transform:`scale(${pop(t,a)})`})})}
+// counter(t, t0, t1, from, to, decimals) -> animated number text
+function counter(t,t0,t1,a,b,d=0){return (a+(b-a)*io(seg(t,t0,t1))).toFixed(d)}
+</script>
+<script src="__STORY__"></script>
+<script>
+// ---- scenes --------------------------------------------------------------------------------
+const SC=(EP.scenes||[]).map((s,i)=>{const d=(typeof STORY!=='undefined'&&STORY.scenes&&STORY.scenes[s.id])||{};return {id:s.id,segs:s.segs,d,i}});
+SC.forEach((s,i)=>{s.t0=i===0?0:OFF[s.segs[0]]-(+((EP.pause||{})[s.segs[0]]||0))-0.25});
+SC.forEach((s,i)=>{s.t1=SC[i+1]?SC[i+1].t0:END+1});
+$('scenes').innerHTML=SC.map(s=>`<div class="scene" id="S_${s.id}" style="background:${s.d.bg||'var(--cream)'}">${s.d.html||''}</div>`).join('');
+SC.forEach(s=>{if(s.d.init)s.d.init()});
+if(typeof STORY!=='undefined'&&STORY.init)STORY.init();
+// ---- chapters ------------------------------------------------------------------------------
+const CHP=(EP.chapters||[]).filter(c=>OFF[c.at]!==undefined).map((c,i)=>{const p=+((EP.pause||{})[c.at]||0);return {n:i+1,title:c.title,t:OFF[c.at],c0:OFF[c.at]-p,c1:OFF[c.at]-0.1,card:p>=0.8}});
+$('ticks').innerHTML=CHP.map(c=>`<i style="left:${(c.c0/END*100).toFixed(2)}%"></i>`).join('');
+// ---- captions ------------------------------------------------------------------------------
+const CAPON=EP.captions!==false, CN=EP.captionWords||5;
+const chunks=[];(function(){let cur=null;W.forEach((w,i)=>{const prev=W[i-1];
+ const brk=!cur||cur.s!==w.s||cur.w.length>=CN||/[.!?:]$/.test(prev.w)||(w.t0-prev.t1)>0.4;
+ if(brk){cur={s:w.s,w:[]};chunks.push(cur)}cur.w.push(w)});
+ chunks.forEach(c=>c.t0=c.w[0].t0);chunks.forEach((c,i)=>{const last=c.w[c.w.length-1].t1;const nx=chunks[i+1];c.t1=nx?Math.min(nx.t0,last+0.45):last+0.6});})();
+function caption(t){const el=$('cap');if(!CAPON||(typeof STORY!=='undefined'&&STORY.noCap&&STORY.noCap(t))){el.innerHTML='';el.dataset.k='';return}
+ const c=chunks.find(c=>t>=c.t0&&t<c.t1);if(!c){el.innerHTML='';el.dataset.k='';return}
+ const k=c.t0+'';if(el.dataset.k!==k){el.innerHTML=c.w.map(w=>`<span>${w.w.replace(/</g,'&lt;')}</span>`).join('');el.dataset.k=k}
+ [...el.children].forEach((s,i)=>{const on=t>=c.w[i].t0;s.style.opacity=on?1:.55;s.style.color=(on&&t<(c.w[i+1]?c.w[i+1].t0:c.t1))?HI:'#fff'})}
+// ---- frame ---------------------------------------------------------------------------------
+window.render=function(t){
+ const cur=SC.find(s=>t>=s.t0&&t<s.t1)||SC[SC.length-1];
+ SC.forEach(s=>{const el=$('S_'+s.id);const on=s===cur;el.style.display=on?'block':'none';if(on){el.style.opacity=Math.min(1,(t-s.t0)/0.3+ (s.i===0?1:0));if(s.d.render)s.d.render(t,t-s.t0,(t-s.t0)/(s.t1-s.t0))}});
+ const cc=CHP.find(c=>c.card&&t>=c.c0&&t<c.c1);const cd=$('card');
+ if(cc){cd.style.display='flex';$('cardN').textContent=((TH.labels&&TH.labels.chapter)||'PART')+' '+cc.n;$('cardT').textContent=cc.title;const e=pop(t,cc.c0+0.1,.4);$('cardT').style.transform=`scale(${e})`;cd.style.opacity=Math.min(1,(t-cc.c0)/0.2,(cc.c1-t)/0.2)}else cd.style.display='none';
+ const now=[...CHP].reverse().find(c=>t>=c.t);const ch=$('chap');if(now){ch.textContent=now.n+' · '+now.title;ch.style.opacity=Math.min(1,(t-now.t)/0.4)}else ch.style.opacity=0;
+ $('bar').style.width=(t/END*100).toFixed(3)+'%';
+ caption(cc?-1:t);
+};
+window.render(0);
+</script></body></html>

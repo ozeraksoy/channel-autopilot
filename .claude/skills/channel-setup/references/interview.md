@@ -6,6 +6,10 @@ working notes so nothing is asked twice.
 ## Round 1 — format and platforms
 1. Which format? [Shorts only · Long videos only · Mixed] — recommend Shorts for a new channel: faster feedback, cheaper to produce.
 2. Which platforms? [YouTube only · YouTube + TikTok + Instagram · + Facebook · other mix] — the same vertical short works on all four.
+2b. If long or mixed: how should long videos be made? [Animated in our style (16:9 engine) · From my own footage/photos ·
+   With clips from a video model I have access to · A mix] — if a video model: which one, local or hosted, and can it be
+   called from a script? (Connected later in `channel.json` → `production.video_provider`; their key goes in `.env`.)
+   How long should a typical video be, and how many per week or month is realistic *with* the owner watching each one?
 3. Do the accounts already exist? Which handles? (If not, pick a name later in this interview and the owner creates them.)
 
 ## Round 2 — niche
@@ -46,6 +50,11 @@ working notes so nothing is asked twice.
     Schedule everything that passes the quality check · Also reply to comments]. Write the exact standing permission into
     `CHANNEL.md` — later sessions act only on what is written there.
 23. AI disclosure: the kit turns on the platform's "AI-generated/altered content" label when AI voice or imagery is used. Confirm.
+
+## Round 7b — quality
+23b. Explain the no-slop standard (`QUALITY.md`) in two sentences and get agreement: an episode that fails the quality
+    check is fixed or dropped, even if that means a missed day; long videos need the owner's outline approval and viewing.
+    Ask: what would make *you* embarrassed to have on your channel? Add the answers to the guardrails.
 
 ## Round 8 — goals and measurement
 24. What is the main goal? [Followers · Views · Comments/community · Selling something later · Just learning]

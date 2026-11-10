@@ -9,11 +9,15 @@ onboarding interview → look and main character → episode production → publ
   session and continue from "Status". Write down what you did before you stop — the next session only knows what is in the files.
 - No channel yet, or the owner wants a new one → use the `channel-setup` skill. Do not start producing before setup is done.
 - Skills (in `.claude/skills/`): `channel-setup`, `channel-design`, `episode-production`, `publishing`, `analytics-loop`,
-  `engagement`, `daily-run`, `channel-edit`.
-- Tools (in `tools/`): `check_setup.py`, `new_channel.py`, `new_episode.py`, `tts.py`, `sfx.py`, `produce.sh`, `perf.py`.
+  `long-form-production`, `engagement`, `daily-run`, `channel-edit`.
+- Tools (in `tools/`): `check_setup.py`, `new_channel.py`, `new_episode.py`, `tts.py`, `sfx.py`, `produce.sh`,
+  `clips.py`, `assemble.py`, `perf.py`.
   Prefer them over rewriting the same logic.
 
 ## Rules that always hold
+- **No AI slop, ever** — read `QUALITY.md`. Every episode needs a real reason to exist, verified substance, visuals that
+  carry meaning and earned length. A missed day is better than a bad episode; an episode that fails the quality check is
+  fixed or dropped, never published. This outranks schedules and volume.
 - **Secrets**: API keys live only in `.env` (git-ignored). Never print, echo, log, commit or paste a key, and never read `.env`
   aloud. Tools read keys themselves; to check whether a key exists run `python3 tools/check_setup.py`.
 - **Publishing is the owner's call**: scheduling or posting publicly, changing account settings, and accepting platform

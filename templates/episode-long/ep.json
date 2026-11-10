@@ -1,0 +1,7 @@
+{"format": "long",
+ "title": "Why octopuses would rather walk",
+ "scenes": [{"id": "intro", "segs": ["c1", "c2"]}, {"id": "plumbing", "segs": ["c3", "c4"]}, {"id": "catch", "segs": ["c5", "c6"]}, {"id": "outro", "segs": ["c7"]}],
+ "chapters": [{"title": "The plumbing", "at": "c3"}, {"title": "The catch", "at": "c5"}],
+ "pause": {"c3": 1.6, "c5": 1.6},
+ "sfx": [["c1:stops", "sad", 0.5], ["c4:bigger.", "ding", 0.4]],
+ "captions": true}

@@ -35,6 +35,10 @@ side by side and ask what differs —
 - what commenters actually said (questions, corrections, "do my country" — see `engagement`).
 Read the comments on outliers; they often state the reason outright.
 
+Quality signals count as data: comments calling an episode wrong, lazy or "AI garbage", and sharp early drop-off, go into
+the log as quality findings with the episode named, and the cause is fixed in the next batch. For long videos, look at the
+retention graph: note the timestamps where viewers leave and what was on screen and being said there.
+
 Honesty rules: say what the numbers show and label everything else **hypothesis**. Two or three episodes are an anecdote.
 A difference inside normal day-to-day variation is not a finding. Views alone are not the goal if `channel.json` says the
 goal is followers or comments — rank by the goal metric too.

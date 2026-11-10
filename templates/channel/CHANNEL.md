@@ -3,6 +3,11 @@
 > This file is the single source of truth for this channel. Read it top to bottom at the start of every session,
 > then continue from "Status". Keep it updated as you work — the next session knows only what is written here.
 
+## Rule 0: no AI slop, ever
+The full standard is in `QUALITY.md` at the top of this kit. In short: every episode has a real reason to exist, checked
+facts, visuals that mean something and no padding. If an episode fails its `quality.md` check it is fixed or dropped —
+not published. A missed day is better than a bad episode.
+
 ## Rule 1: every episode must be worth stopping for, and worth following for
 Before producing and before publishing ask: "Would someone stop scrolling for this, and then follow?" If not, fix it first.
 - First 2 seconds: the hook creates curiosity. No slow openings.

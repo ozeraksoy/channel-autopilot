@@ -1,0 +1,4 @@
+{"captions": true, "shots": [
+ {"id": "sh01", "from": "c1", "source": "generate", "prompt": "what exactly is seen, subject, action, setting, light, camera — no on-screen text"},
+ {"id": "sh02", "from": "c2", "source": "file", "file": "footage/my_clip.mp4", "start": 0},
+ {"id": "sh03", "from": "c2:line.", "source": "image", "file": "images/my_image.png", "move": "in"}]}

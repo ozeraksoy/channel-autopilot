@@ -20,3 +20,5 @@ channels/*/episodes/*/characters.js
 channels/*/episodes/*/timing.json
 channels/*/episodes/*/sheet.jpg
 .DS_Store
+channels/*/episodes/*/captions.ass
+channels/*/episodes/*/clips/review.jpg
