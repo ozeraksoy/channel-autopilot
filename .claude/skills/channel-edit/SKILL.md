@@ -18,6 +18,7 @@ do not find two versions of the truth.
 | Name, niche, promise, audience, tone, guardrails | `channel.json`, `CHANNEL.md` §1 | Review `plan.csv` for topics that no longer fit |
 | Format, length, beats, recurring elements, CTA question | `channel.json`, `CHANNEL.md` §2, theme `labels`/`cta` | Applies to unproduced episodes |
 | Colours, labels, badge, main character | `theme.json` via the `channel-design` skill | Preview before saving |
+| How long videos are made, connected video model | `channel.json` → production (`long_style`, `video_provider`), `.env` for its key | Test one shot with `tools/clips.py` |
 | Narrator or native voices, voice provider | `voices.json`, `channel.json` → production | Test one segment with `tools/tts.py … --only s1` |
 | API keys | `.env` (the owner edits it; never show contents) | `python3 tools/check_setup.py` |
 | Platforms, handles, posting time, cadence | `channel.json`, `CHANNEL.md` §4 | Reschedule affected posts with `publishing` |
@@ -29,4 +30,5 @@ do not find two versions of the truth.
 3. Record the change with its date in `CHANNEL.md` (a short "Changes" list under Status). If episodes are already
    published and the change could affect performance (look, voice, structure, schedule), also note it in `insights.md` as
    an experiment so the analysis can compare before and after.
-4. Do not rewrite history: published episodes, logged numbers and past analysis stay as they are.
+4. `QUALITY.md` is not editable per channel: guardrails can be made stricter in `CHANNEL.md`, never looser.
+5. Do not rewrite history: published episodes, logged numbers and past analysis stay as they are.

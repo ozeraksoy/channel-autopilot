@@ -1,9 +1,13 @@
 ---
 name: episode-production
-description: Produce episodes for an existing channel — pick topics from the plan, verify facts, write the script, generate voice-over, animate the story scene, check frames, render and mix the final video, and write titles/descriptions/captions. Use whenever the owner asks to make, produce, render or script an episode or a batch, says "next episodes" or "today's production", or wants an existing episode fixed or re-rendered.
+description: Produce short-form episodes (vertical shorts/reels) for an existing channel — pick topics from the plan, verify facts, write the script, generate voice-over, animate the story scene, check frames, render and mix the final video, and write titles/descriptions/captions. Use whenever the owner asks to make, produce, render or script an episode or a batch, says "next episodes" or "today's production", or wants an existing episode fixed or re-rendered. For long horizontal videos use long-form-production.
 ---
 
 # Episode production
+
+**Quality first**: `QUALITY.md` (top of the kit) is the standard — no AI slop, ever. Each episode folder gets a `quality.md`;
+write its reason-to-exist sentence before producing and complete the check before handing over to publishing. An episode
+that fails is fixed or dropped, and the owner is told. Never lower the bar to keep a schedule.
 
 Read `channels/<slug>/CHANNEL.md` (all of it) and `insights.md` → "Current takeaways" and "Next experiment" before writing
 anything. Episodes are supposed to get better because of what earlier ones taught us; a batch that ignores the takeaways
@@ -39,7 +43,8 @@ usually means a mispronounced or skipped line — regenerate that segment with `
 If the network is down, do the animation work first and come back.
 
 ## 4. Episode data and story — `ep.json`, `story.js`
-Start from `python3 tools/new_episode.py channels/<slug> <ep>` (a complete working starter) and read
+Start from `python3 tools/new_episode.py channels/<slug> <ep>` (a complete working starter; add `clips` as a third argument for a
+short made from generated clips, footage or images instead of animation — see `long-form-production` → "Clips route", it works the same at 1080×1920) and read
 `references/engine.md` for every field and helper. `ep.json` holds the on-screen text and when each piece appears
 (triggers refer to spoken words: `"s4:word"`); `story.js` draws and animates the s4 scene, which is where the effort goes.
 Animation times come from spoken words (`T('s4','word')`), never fixed seconds, so re-recording audio does not break them.
@@ -63,6 +68,7 @@ re-encode a copy: `ffmpeg -i final.mp4 -c:v libx264 -preset veryfast -crf 23 -c:
 - Append a row to `episodes.csv` (topic, title, category, hook_type, hook_text, duration, experiment). The analysis
   compares episodes by these columns, so fill them consistently.
 - Mark the rows in `plan.csv` as produced and update "Status" in `CHANNEL.md`.
+- Complete `quality.md`. Only episodes with verdict PUBLISH go on.
 - Hand over to `publishing`.
 
 ## Fixing an existing episode

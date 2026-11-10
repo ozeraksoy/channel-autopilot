@@ -12,15 +12,25 @@ rules and tools that came out of that.
 |---|---|
 | `channel-setup` | Guided interview: shorts/long/mixed, platforms, niche (or help finding one), audience, tone, structure, schedule, voice and tools, publishing, goals |
 | `channel-design` | Colour theme, design line, labels, brand badge and a recurring main character — with previews before you commit |
-| `episode-production` | Topic → fact check → script → voice-over → animation → control frames → final video and texts |
+| `episode-production` | Shorts: topic → fact check → script → voice-over → animation → control frames → final video and texts |
+| `long-form-production` | Long videos: research → outline you approve → script → 16:9 animation, your footage, or clips from your own video model → your viewing |
 | `publishing` | Uploads and schedules on YouTube, TikTok, Instagram, Facebook through your signed-in browser, or prepares a ready-to-post pack |
 | `analytics-loop` | Logs views/likes/comments/followers daily, explains why episodes over- or under-perform, sets the next experiment |
 | `engagement` | Pinned question, replies in your channel's voice, viewer requests into the plan, "it's live!" follow-ups |
 | `daily-run` | The whole routine in order, with a short report |
 | `channel-edit` | Change anything later: niche, look, voice, schedule, permissions, goals |
 
-Included production engine: **vertical animated shorts** (1080×1920, ~30–60 s) with word-timed captions.
-Long-form or live-action channels can use everything except the video rendering itself.
+## What it can produce
+- **Vertical animated shorts** (1080×1920, ~30–60 s) with word-timed captions.
+- **Long-form animated videos** (1920×1080) with chapters, a progress bar and explainer building blocks.
+- **Videos from clips**, short or long: your own footage and images, and/or clips from a video model **you** connect
+  (your model, your account, your key — none is bundled). Shots are cut to the narration, captioned and mixed.
+
+## No AI slop
+The kit refuses to be a content mill. [`QUALITY.md`](QUALITY.md) is binding for every channel: each episode needs a real
+reason to exist, checked facts, visuals that mean something and no padding. Generated clips must be individually reviewed
+before they can be used, long videos need your approval of the outline and your viewing of the final cut, and an episode
+that fails the check is fixed or dropped — a missed day is better than a bad video.
 
 ## Quick start
 ```bash
@@ -61,6 +71,7 @@ python3 tools/sfx.py basic channels/demo
 python3 tools/tts.py channels/demo ep001            # free voice
 tools/produce.sh channels/demo ep001 check          # control frames → channels/demo/episodes/ep001/sheet.jpg
 tools/produce.sh channels/demo ep001 render         # → final.mp4
+python3 tools/new_episode.py channels/demo lf001 long   # 16:9 long-form starter (then tts + produce as above)
 node engine/preview.js channels/demo/theme.json theme_preview.png
 ```
 `examples/funny-slangs-ep28/` is a real episode's source (script, episode data, story animation).
@@ -68,13 +79,17 @@ node engine/preview.js channels/demo/theme.json theme_preview.png
 ## Honest limits
 - Platforms change their screens; publishing steps may need a nudge (Claude records what it learns in your channel guide).
 - The animation style is one specific look (thick outlines, flat colours). Other styles mean extending the engine.
+- Long animated videos take real scene-by-scene work; the kit makes that work structured, not instant.
+- The clips route is only as good as the footage or the model you connect, which is why every clip is reviewed.
 - Good numbers are not guaranteed. The kit makes you consistent and makes you learn from data; the ideas still matter.
 
 ## Türkçe özet
 Bu repo, Claude Code ile sıfırdan bir video kanalı kurup yürütmek için hazır bir skill setidir. Klasörü indirip içinde
 Claude Code'u açın ve "yeni bir kanal kurmak istiyorum" yazın: sorularla kanalınızı tanımlar (shorts/uzun, platformlar,
 niş, ton, takvim, ses ve araçlar), tema ve ana karakter tasarlar, bölümleri üretir, yayınlar, her gün veriyi analiz eder
-ve izleyiciyle ilgilenir. Anahtar gerekmez; isterseniz kendi ElevenLabs anahtarınızı `.env` dosyasına eklersiniz.
+ve izleyiciyle ilgilenir. Shorts'un yanında uzun (yatay) videolar da üretir: kendi animasyon tarzımızla, kendi
+çekimlerinizle ya da sizin bağladığınız bir video modelinin klipleriyle. Tek şart: asla "AI slop" üretilmez
+(`QUALITY.md`); kalite kontrolünden geçmeyen bölüm yayınlanmaz. Anahtar gerekmez; isterseniz kendi ElevenLabs anahtarınızı `.env` dosyasına eklersiniz.
 
 ## Licence
 MIT (see `LICENSE`). Bundled fonts are under the SIL Open Font License.

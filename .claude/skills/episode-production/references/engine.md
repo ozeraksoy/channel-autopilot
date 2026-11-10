@@ -1,4 +1,7 @@
-# Engine reference (vertical animated shorts)
+# Engine reference
+
+Three ways to make the picture: the **short engine** (vertical, seven beats — most of this file), the **long-form engine**
+(16:9, free scene structure — section near the end), and **clips mode** (generated clips, footage, images — `tools/clips.py`).
 
 Pipeline: `script.json` → `tools/tts.py` (audio + character timing in `vo/`) → `engine/timing.py` (word times →
 `timing.json`) → `engine/build.py` (merges `engine.html` + `ep.json` + `theme.json` + `story.js` → `build.html`) →
@@ -62,3 +65,32 @@ if installed. For another script add a woff2 to `engine/fonts/` and an `@font-fa
 ## Sound
 `engine/mix.py` adds standard scene sounds if present in `sfx/` (`pop`, `whoosh`, `boom`, `ding`, `text`), your `ep.json`
 effects, and the music bed at low volume, then normalises loudness (`TARGET_LUFS` env var overrides −17.4).
+
+## Long-form engine (16:9)
+`ep.json` with `"format": "long"` switches to `engine/long.html` (1920×1080). Segments are free (`c1, c2, …` in `script.json` order).
+```
+{"format": "long", "title": "…",
+ "scenes":   [{"id": "intro", "segs": ["c1", "c2"]}, {"id": "plumbing", "segs": ["c3", "c4"]}, …],   // which narration segments each scene covers
+ "chapters": [{"title": "The plumbing", "at": "c3"}, …],      // chapter label + tick on the progress bar
+ "pause":    {"c3": 1.6},                                      // silence before a segment; ≥0.8 s before a chapter start shows a full-screen chapter card
+ "sfx": [["c4:bigger.", "ding", 0.4]], "music": "bed", "musicVol": 0.08,
+ "captions": true, "captionWords": 5, "gap": 0.35, "tail": 1.2}
+```
+`story.js`: `const STORY = {scenes: {intro: {bg, html, init(), render(t, lt, p)}, …}}` — `t` absolute seconds, `lt` seconds since
+the scene started, `p` progress 0..1. Keep content above y≈900 (captions sit at 930) and below y≈110 (badges).
+Building blocks (return html; call the matching render function every frame):
+- `bullets(id, [{text, at}], {left, top, width, size})` + `bulletsRender(id, t)` — points that slide in when spoken.
+- `bigText(id, [[text, colour, size], …], {top})` + `linesRender(id, t, [triggers])` — display lines that pop in.
+- `counter(t, t0, t1, from, to, decimals)` — animated number as text.
+- CSS classes: `card` (white panel), `chip` (label), `T` (display font, ink), `B` (body font), `L` (outlined display), `abs`, `cen`.
+- Everything from the short engine also works: `kevSVG`/`kv`, `T()`, `AT()`, `pop`, `seg`, `sty`, `CH()`, flags.
+Automatic: brand badge, chapter label, progress bar with chapter ticks, crossfade between scenes, captions (5-word chunks).
+`python3 engine/chapters.py <episode_dir>` prints chapter timestamps for the description.
+Control frames: `tools/produce.sh … check` samples two frames per segment (max 48); pass explicit times to
+`node engine/shots.js <episode_dir> 12.5 40` to inspect a moment.
+
+## Clips mode (generated clips, footage, images)
+`ep.json` with `"mode": "clips"` (plus `"format": "long"` for 16:9, otherwise 1080×1920) and a `shots.json`. `tools/produce.sh`
+then runs `tools/clips.py` (plan/review) for `check` and `tools/assemble.py` + `engine/mix.py` for `render`.
+Captions are burned from the word timing (font from `theme.json` → `captionFont`, default Arial; highlight = accent colour);
+set `"captions": false` in `shots.json` to leave them off. Details and the review rules: `long-form-production` skill.

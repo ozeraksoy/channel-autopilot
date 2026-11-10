@@ -11,7 +11,8 @@
   "handles": {"youtube": "", "tiktok": "", "instagram": "", "facebook": ""},
   "cadence": {"per_week": 7, "post_time": "12:15", "timezone": ""},
   "episode_length_seconds": [30, 50],
-  "production": {"style": "2d-animation-engine", "voice_provider": "edge", "sfx": "basic"},
+  "production": {"short_style": "animation", "long_style": "animation", "voice_provider": "edge", "sfx": "basic",
+                 "video_provider": {"command": ""}},
   "publishing": {"method": "browser", "ai_disclosure": true},
   "goals": {"primary": "followers", "target_90_days": ""},
   "guardrails": []

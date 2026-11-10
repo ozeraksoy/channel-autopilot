@@ -7,6 +7,11 @@ description: Upload and schedule finished episodes on YouTube, TikTok, Instagram
 
 Publishing is public and hard to undo, so the order is: check permission → prepare → confirm → act → verify → record.
 
+## Quality gate
+Publish only episodes whose `quality.md` is complete with verdict PUBLISH (see `QUALITY.md`). Long videos additionally
+need the owner's recorded viewing approval. If the check is missing or says FIX/DROP, stop and say so — do not schedule
+it to keep the calendar full.
+
 ## Permission
 Read `CHANNEL.md` for a standing permission (written during setup). If the routine you are about to run is not covered
 by it word for word, show the owner what will be posted (episode, platform, date/time, title/caption) and wait for a yes.
