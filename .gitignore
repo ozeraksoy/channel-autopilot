@@ -1,0 +1,22 @@
+# secrets
+.env
+*.env
+!.env.example
+keys.*
+# dependencies
+node_modules/
+__pycache__/
+*.pyc
+# generated media and build files (large; keep your own backups)
+*.mp4
+*.mov
+*.wav
+*.mp3
+channels/*/episodes/*/build.html
+channels/*/episodes/*/chk/
+channels/*/episodes/*/fonts/
+channels/*/episodes/*/flags.js
+channels/*/episodes/*/characters.js
+channels/*/episodes/*/timing.json
+channels/*/episodes/*/sheet.jpg
+.DS_Store

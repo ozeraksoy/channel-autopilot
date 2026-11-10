@@ -1,0 +1,18 @@
+{
+  "name": "",
+  "slug": "",
+  "owner_language": "en",
+  "content_language": "en",
+  "niche": "",
+  "promise": "",
+  "audience": "",
+  "format": "shorts",
+  "platforms": ["youtube"],
+  "handles": {"youtube": "", "tiktok": "", "instagram": "", "facebook": ""},
+  "cadence": {"per_week": 7, "post_time": "12:15", "timezone": ""},
+  "episode_length_seconds": [30, 50],
+  "production": {"style": "2d-animation-engine", "voice_provider": "edge", "sfx": "basic"},
+  "publishing": {"method": "browser", "ai_disclosure": true},
+  "goals": {"primary": "followers", "target_90_days": ""},
+  "guardrails": []
+}

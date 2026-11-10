@@ -1,0 +1,9 @@
+{"country":"GERMANY","flag":"DE","kevin":{"shirt":"#FFCE00"},
+ "hook":{"chip":"GERMAN SLANG","chipAt":"s1:germany,","big":"HUH?!","bigAt":"s1:understand","kevAt":"s1:when","kev":{"mouth":"o","brows":"sad"}},
+ "reveal":{"chip":"GERMAN SLANG","lines":[["ICH VERSTEHE","w",150],["NUR BAHNHOF!","yel",150]],"pron":"ikh fair-SHTAY-uh noor BAHN-hohf","bg":"radial-gradient(circle at 50% 45%,#DD0000,#5A0000 70%)"},
+ "literal":{"lines":[[["I ONLY","w",140]],[["UNDERSTAND","w",120]],[["TRAIN STATION!","yel",110]]]},
+ "meaning":{"lines":[["I DON'T","w",150],["UNDERSTAND","w",130],["ANYTHING!","cor",150]],"at":["s5:don't","s5:understand","s5:anything."],"artAt":"s5:greek"},
+ "chat":{"name":"Lukas","bubbles":[{"side":"L","text":"Dad explained crypto to me for an hour 🪙","at":"s6:dad"},{"side":"R","text":"And? 😂","at":"s6:hour."},{"side":"L","text":"<span style='color:#E8590C'>Ich verstehe nur Bahnhof 🚉</span>","at":"s6:only"}]},
+ "cta":{"lines":[["WHAT DOES YOUR","w",100],["LANGUAGE SAY WHEN","w",86],["YOU'RE LOST?","cor",130]]},
+ "sfx":[["s4:professor","chalk",0.7],["s4:quantum","chalk",0.5],["s4:empty.","crickets",0.6],["s4:station.","ding",0.6],["s4:tiny","train",0.8],["s4:choo","train",0.6],["s3:station!","train",0.4]],
+ "cover":"s4:choo"}

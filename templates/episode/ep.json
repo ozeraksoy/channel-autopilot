@@ -1,0 +1,9 @@
+{"badge":"ANIMALS",
+ "hook":{"chip":"ANIMAL FACT","chipAt":"s1:octopus","big":"WAIT...","bigAt":"s1:wild","kevAt":"s1:hiding","kev":{"mouth":"o","brows":"sad"}},
+ "reveal":{"chip":"THE FACT","lines":[["THREE","w",230],["HEARTS!","yel",210]]},
+ "literal":{"chip":"REALLY","lines":[[["THREE","yel",170]],[["SEPARATE","w",130]],[["HEARTS","cor",170]]]},
+ "meaning":{"chip":"SO...","lines":[["SWIMMING","w",130],["IS","w",130],["EXHAUSTING","cor",120]],"at":["s5:swimming","s5:octopus","s5:tired."],"artAt":"s5:crawl."},
+ "chat":{"name":"Maya","bubbles":[{"side":"L","text":"I ran for the bus today 🚌","at":"s6:ran"},{"side":"R","text":"And?","at":"s6:today."},{"side":"L","text":"My ONE heart almost quit 💀","at":"s6:one"}]},
+ "cta":{"lines":[["WHICH ANIMAL","w",110],["SHOULD WE","w",110],["OPEN UP NEXT?","cor",120]]},
+ "sfx":[["s4:doctor.","ding",0.5],["s4:two","pop",0.7],["s4:third","pop",0.7],["s4:stops.","sad",0.7]],
+ "cover":"s4:third"}

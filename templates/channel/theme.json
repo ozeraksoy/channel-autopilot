@@ -1,0 +1,8 @@
+{
+  "brand": {"a": "MY", "b": "CHANNEL"},
+  "handle": "@mychannel",
+  "colors": {"ink": "#1F1A2E", "accent": "#FFD23F", "accent2": "#FF5A5F", "accent3": "#23C9B6", "paper": "#FFF6E0"},
+  "labels": {"unpack": "LITERALLY", "takeaway": "MEANING", "comments": "COMMENTS", "follow": "FOLLOW", "sayIt": "say it: "},
+  "cta": {"followWord": "follow", "dropWord": "comments"},
+  "character": {"name": "Kevin", "shirt": "#23C9B6", "hair": "#7A4A2A", "skin": "#FFD3A8", "pants": "#3D5A99", "hairStyle": "short", "accessory": "none"}
+}

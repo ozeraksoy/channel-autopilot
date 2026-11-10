@@ -1,0 +1,170 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:L;src:url(fonts/lilita-latin.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:L;src:url(fonts/lilita-ext.woff2);unicode-range:U+0100-024F}
+@font-face{font-family:N;font-weight:900;src:url(fonts/nunito-latin.woff2);unicode-range:U+0000-00FF}
+@font-face{font-family:N;font-weight:900;src:url(fonts/nunito-ext.woff2);unicode-range:U+0100-024F}
+@font-face{font-family:L;src:url(fonts/rubik-cyr.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:N;font-weight:900;src:url(fonts/rubik-cyr.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:L;src:url(fonts/baloo-deva.woff2);unicode-range:U+0900-097F,U+1CD0-1CFF,U+A8E0-A8FF}
+@font-face{font-family:L;src:url(fonts/lalezar-arabic.woff2);unicode-range:U+0600-06FF,U+FE70-FEFF}
+@font-face{font-family:N;font-weight:900;src:url(fonts/baloo-deva.woff2);unicode-range:U+0900-097F}
+@font-face{font-family:N;font-weight:900;src:url(fonts/lalezar-arabic.woff2);unicode-range:U+0600-06FF,U+FE70-FEFF}
+:root{--ink:#1F1A2E;--yel:#FFD23F;--cor:#FF5A5F;--teal:#23C9B6;--cream:#FFF6E0;--tom:#F03C2E}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.scene{position:absolute;inset:0;opacity:0;display:none}
+.L{font-family:L,N,sans-serif;color:#fff;-webkit-text-stroke:14px var(--ink);paint-order:stroke fill;text-transform:uppercase;letter-spacing:.01em}
+.NAT{font-weight:900;font-family:L,N,'Noto Sans CJK JP','Noto Sans CJK SC','Noto Sans CJK KR','Noto Sans Devanagari','Noto Sans Arabic',sans-serif}
+.abs{position:absolute}.cen{left:0;right:0;text-align:center}
+.chip{position:absolute;left:50%;transform:translateX(-50%);font-family:L;font-size:54px;color:var(--ink);background:var(--yel);border:7px solid var(--ink);border-radius:60px;padding:10px 38px 6px;white-space:nowrap;box-shadow:0 9px 0 var(--ink)}
+#brand{position:absolute;top:118px;left:70px;font-family:L;font-size:46px;color:var(--ink);background:#fff;border:6px solid var(--ink);border-radius:50px;padding:8px 30px 4px;box-shadow:0 7px 0 var(--ink);z-index:50}
+#brand b{color:var(--cor);font-weight:400}
+#country{position:absolute;top:118px;right:70px;display:flex;align-items:center;gap:14px;font-family:L;font-size:46px;color:var(--ink);background:#fff;border:6px solid var(--ink);border-radius:50px;padding:8px 28px 4px 14px;box-shadow:0 7px 0 var(--ink);z-index:50}
+#cap{position:absolute;left:60px;right:60px;top:1330px;text-align:center;font-size:92px;line-height:1.05;z-index:60}
+#cap span{display:inline-block;margin:0 12px}
+.bubble{position:absolute;font-family:N;font-weight:900;font-size:56px;line-height:1.15;padding:26px 36px;border-radius:44px;border:6px solid var(--ink);max-width:660px}
+.ww{display:inline-block;margin:0 16px}
+</style></head>
+<body><div id="stage">
+<div class="scene" id="A"><div class="abs" id="Abg" style="inset:0"></div>
+  <div class="abs" id="Aflag" style="left:340px;top:280px;width:400px"></div>
+  <div class="chip" id="Achip" style="top:590px;background:var(--cor);color:#fff"></div>
+  <div class="abs cen" id="Abig" style="top:700px"><span class="L" id="AbigT" style="font-size:190px;color:var(--yel)"></span></div>
+  <div class="abs" id="Akev" style="left:390px;top:930px;width:300px;height:400px;overflow:hidden"></div>
+</div>
+<div class="scene" id="B"><div class="abs" id="Bbg" style="inset:0"></div>
+  <svg class="abs" style="left:-460px;top:-160px" width="2000" height="2000" viewBox="-1000 -1000 2000 2000" id="Brays"></svg>
+  <div class="chip" id="Bchip" style="top:330px;background:#fff"></div>
+  <div class="abs cen" id="Blines" style="top:480px;line-height:1.02"></div>
+  <div class="abs cen" id="Bpron" style="top:1215px;font-family:N;font-weight:900;font-size:46px;color:#fff;padding:0 60px"></div>
+</div>
+<div class="scene" id="C" style="background:var(--cream)">
+  <div class="chip" id="Cchip" style="top:300px"></div>
+  <div class="abs cen" id="Clines" style="top:420px;line-height:1.0"></div>
+  <div class="abs" id="Cart" style="left:190px;top:820px;width:700px;height:470px"></div>
+</div>
+<div class="scene" id="D"></div>
+<div class="scene" id="E" style="background:linear-gradient(#FFE9B8,#FFD9A0)">
+  <div class="chip" id="Echip" style="top:300px;background:var(--teal);color:#fff"></div>
+  <div class="abs cen" id="Elines" style="top:430px;line-height:1.0"></div>
+  <div class="abs" id="Eart" style="left:190px;top:800px;width:700px;height:500px"></div>
+</div>
+<div class="scene" id="F" style="background:linear-gradient(#C9E9FF,#E7F5FF)">
+  <div class="abs" style="left:110px;top:270px;width:860px;height:980px;background:#fff;border:8px solid var(--ink);border-radius:60px;box-shadow:0 16px 0 var(--ink)">
+    <div style="height:120px;border-bottom:5px solid #E3E0EA;display:flex;align-items:center;gap:20px;padding-left:40px;font-family:N;font-weight:900;font-size:46px;color:var(--ink)">
+      <div id="Fav" style="width:76px;height:76px;border-radius:50%;background:var(--teal);border:5px solid var(--ink);display:flex;align-items:center;justify-content:center;color:#fff;font-size:40px"></div><span id="Fname"></span></div>
+  </div>
+  <div id="Fbub"></div>
+  <div class="abs" id="Fstk" style="width:230px;height:230px"></div>
+</div>
+<div class="scene" id="G" style="background:radial-gradient(circle at 50% 40%,#FFE27A,#FFD23F 60%,#F5B700)">
+  <div class="abs cen" id="Glines" style="top:330px;line-height:1.02"></div>
+  <div class="abs" id="Garrow" style="left:440px;top:850px;width:200px"></div>
+  <div class="abs cen" id="Gcom" style="top:1100px"><span class="chip" id="GcomT" style="position:static;transform:none;display:inline-block;background:#fff"></span></div>
+  <div class="abs" id="Gkev" style="left:90px;top:760px;width:270px"></div>
+  <div class="abs" id="Gfollow" style="left:390px;top:1000px;font-family:L;font-size:58px;color:#fff;background:var(--cor);border:7px solid var(--ink);border-radius:30px;padding:16px 40px 10px;box-shadow:0 10px 0 var(--ink);white-space:nowrap"></div>
+</div>
+<div id="brand"></div>
+<div id="country"><span id="cflag"></span><span id="cname"></span></div>
+<div id="cap" class="L"></div>
+</div>
+<script src="flags.js"></script>
+<script src="characters.js"></script>
+<script>
+const TIMING=__TIMING__; const EP=__EP__; const THEME=__THEME__;
+</script>
+<script src="__STORY__"></script>
+<script>
+const W=TIMING.words, OFF=TIMING.off;
+const norm=w=>w.toLowerCase().normalize('NFC').replace(/[.,!?¿¡:;"'“”‘’…()\-]/g,'');
+function T(s,w,n=0){const m=W.filter(x=>x.s===s&&norm(x.w)===norm(w));if(!m[n]){console.error('missing',s,w,n);return OFF[s]}return m[n].t0}
+function AT(k){if(typeof k==='number')return k;const [s,w,n]=k.split(':');return T(s,w,+(n||0))}
+const SEND=s=>{const m=W.filter(x=>x.s===s);return m[m.length-1].t1};
+const COL={yel:'var(--yel)',cor:'var(--cor)',teal:'var(--teal)',tom:'var(--tom)',w:'#fff'};
+const span=(t,c,sz,cls='')=>`<span class="L ww ${cls}" style="font-size:${sz}px;color:${COL[c]||'#fff'}">${t}</span>`;
+// --- theme (channel-level look; see templates/theme.json)
+const TH=Object.assign({brand:{a:'MY',b:'CHANNEL'},handle:'@mychannel',labels:{},colors:{},character:{},cta:{}},THEME||{});
+const LB=Object.assign({unpack:'LITERALLY',takeaway:'MEANING',comments:'COMMENTS',follow:'FOLLOW',sayIt:'say it: '},TH.labels||{});
+(function(){const c=TH.colors||{};const map={ink:'--ink',accent:'--yel',accent2:'--cor',accent3:'--teal',paper:'--cream'};for(const k in map)if(c[k])document.documentElement.style.setProperty(map[k],c[k]);})();
+const HI=(TH.colors&&TH.colors.accent)||'#FFD23F';
+const CH=o=>Object.assign({},TH.character||{},o||{});
+$('brand').innerHTML=(TH.brand.a||'')+(TH.brand.b?' <b>'+TH.brand.b+'</b>':'');
+$('Cchip').textContent=(EP.literal&&EP.literal.chip)||LB.unpack;$('Echip').textContent=(EP.meaning&&EP.meaning.chip)||LB.takeaway;$('GcomT').textContent=LB.comments;$('Gfollow').textContent=LB.follow+' '+TH.handle;
+const HASFLAG=!!(EP.flag&&typeof F!=='undefined'&&F[EP.flag]);
+// --- build static
+if(HASFLAG)$('cflag').innerHTML=flagSVG(EP.flag,70);$('cname').textContent=EP.badge||EP.country||'';if(!(EP.badge||EP.country))$('country').style.display='none';
+(function(){if(!HASFLAG){$('Aflag').innerHTML=(typeof STORY!=='undefined'&&STORY.hookArt)||'';return}let s='';for(let i=0;i<40;i++)s+=`<svg x="${20+i*9}" y="20" width="10" height="220" viewBox="${i*0.75} 0 0.8 20" preserveAspectRatio="none" class="fs">${F[EP.flag]}</svg>`;
+ $('Aflag').innerHTML=`<svg width="400" height="270" viewBox="0 0 400 270"><rect x="12" y="10" width="10" height="260" fill="#8B5E3C" stroke="${INK}" stroke-width="4"/>${s}</svg>`})();
+$('Abg').style.background=EP.hook.bg||'linear-gradient(#8FD3FF,#D8F1FF 65%,#FFF6E0)';
+$('Achip').textContent=EP.hook.chip;$('AbigT').textContent=EP.hook.big||'';$('AbigT').style.fontSize=Math.min(190,Math.floor(1700/Math.max(1,(EP.hook.big||'').length)))+'px';$('AbigT').style.whiteSpace='nowrap';
+$('Akev').innerHTML=kevSVG('kA',CH(EP.kevin));
+$('Bbg').style.background=EP.reveal.bg||'radial-gradient(circle at 50% 45%,#3A3352,#1F1A2E 70%)';$('Bchip').textContent=EP.reveal.chip;
+$('Blines').innerHTML=EP.reveal.lines.map(([t,c,sz])=>`<div class="L NAT Bw" style="font-size:${sz||170}px;color:${COL[c]||'#fff'}">${t}</div>`).join('');
+$('Bpron').textContent=EP.reveal.pron?LB.sayIt+EP.reveal.pron:'';
+$('Clines').innerHTML=EP.literal.lines.map(l=>l.map(([t,c,sz])=>span(t,c,sz||120,'Cw')).join('')).join('<br>');
+$('Elines').innerHTML=EP.meaning.lines.map(([t,c,sz])=>`<div class="L Ew" style="font-size:${sz||130}px;color:${COL[c]||'#fff'}">${t}</div>`).join('');
+$('Fname').textContent=EP.chat.name;$('Fav').textContent=EP.chat.name[0];
+let by=440;$('Fbub').innerHTML=EP.chat.bubbles.map((b,i)=>{const h=`<div class="bubble Fb" style="${b.side==='L'?'left':'right'}:160px;top:${b.y||0}px;background:${b.side==='L'?'#EDEBF2':'#3B82F6'};color:${b.side==='L'?INK:'#fff'}">${b.text}</div>`;return h}).join('');
+$('Glines').innerHTML=EP.cta.lines.map(([t,c,sz])=>`<div class="L Gw" style="font-size:${sz||100}px;color:${COL[c]||'#fff'}">${t}</div>`).join('');
+if(TH.colors&&TH.colors.accent)$('G').style.background=`radial-gradient(circle at 50% 40%,color-mix(in srgb,${HI} 65%,#fff),${HI} 62%,color-mix(in srgb,${HI} 85%,#000))`;
+$('Garrow').innerHTML=bigArrow('#fff');$('Gkev').innerHTML=kevSVG('kG',CH(EP.kevin));
+$('D').innerHTML=STORY.html;$('Cart').innerHTML=STORY.literalArt||'';$('Eart').innerHTML=STORY.meaningArt||'';$('Fstk').innerHTML=STORY.sticker||'';
+if(STORY.init)STORY.init();
+// bubble layout after render (auto y)
+let FL=false;function layoutF(){if(FL)return;const bs=document.querySelectorAll('.Fb');if(!bs.length||!bs[0].offsetHeight)return;let y=440;bs.forEach(b=>{b.style.top=y+'px';y+=b.offsetHeight+28});sty('Fstk',{left:'150px',top:(y-10)+'px'});FL=true}
+// captions
+const chunks=[];(function(){let cur=null;W.forEach((w,i)=>{if(w.s==='s2')return;const prev=W[i-1];
+ const brk=!cur||cur.s!==w.s||cur.w.length>=3||/[.,!?:]$/.test(prev.w)||(w.t0-prev.t1)>0.35;
+ if(brk){cur={s:w.s,w:[]};chunks.push(cur)}cur.w.push(w)});
+ chunks.forEach(c=>c.t0=c.w[0].t0);chunks.forEach((c,i)=>{const last=c.w[c.w.length-1].t1;const nx=chunks[i+1];c.t1=nx?Math.min(nx.t0,last+0.45):last+0.6});})();
+function caption(t){if(STORY.noCap&&STORY.noCap(t)){$('cap').innerHTML='';$('cap').dataset.k='';return}
+ const c=chunks.find(c=>t>=c.t0&&t<c.t1);const el=$('cap');if(!c){el.innerHTML='';el.dataset.k='';return}
+ if(el.dataset.k!==String(c.t0)){el.dataset.k=c.t0;el.innerHTML=c.w.map(w=>`<span>${w.w.replace(/\.\.\.$/,'…')}</span>`).join('')}
+ el.style.transform=`scale(${0.8+0.2*ob(seg(t,c.t0,c.t0+0.18))})`;
+ [...el.children].forEach((s,i)=>{const w=c.w[i];const on=t>=w.t0;s.style.color=(on&&t<(c.w[i+1]?c.w[i+1].t0:c.t1))?HI:'#fff';s.style.opacity=on?1:0.55})}
+const B_=k=>OFF[k]-0.2;
+const SC=[['A',0,B_('s2')],['B',B_('s2'),B_('s3')],['C',B_('s3'),B_('s4')],['D',B_('s4'),B_('s5')],['E',B_('s5'),B_('s6')],['F',B_('s6'),B_('s7')],['G',B_('s7'),999]];
+function S(id,t,a,b){const el=$(id);const vis=t>=a-0.001&&t<b;el.style.opacity=vis?1:0;el.style.display=vis?'block':'none';el.style.transform=`scale(${1.08-0.08*oc(seg(t,a,a+0.22))})`;return vis}
+// word-trigger lists: literal words matched in order to s3 words
+const s3w=W.filter(w=>w.s==='s3');
+const CT=(function(){let j=0;const out=[];document.querySelectorAll('.Cw').forEach(e=>{const k=norm(e.textContent.split(' ')[0]);let f=-1;for(let i=j;i<s3w.length;i++)if(norm(s3w[i].w).startsWith(k)||k.startsWith(norm(s3w[i].w))&&norm(s3w[i].w).length>1){f=i;break}
+ if(f>=0){out.push(s3w[f].t0);j=f+1}else out.push(out.length?out[out.length-1]+0.25:OFF.s3+0.6)});return out})();
+const BT=(function(){const ws=W.filter(w=>w.s==='s2');const n=document.querySelectorAll('.Bw').length;if(ws.length<n){const a=ws[0].t0,e=ws[ws.length-1].t1;return [...Array(n)].map((_,i)=>a+i*(e-a)/n)}return [...Array(n)].map((_,i)=>ws[Math.min(ws.length-1,Math.floor(i*ws.length/n))].t0)})();
+const s5w=W.filter(w=>w.s==='s5');const ET=EP.meaning.at?EP.meaning.at.map(AT):[s5w[Math.min(3,s5w.length-1)].t0,s5w[Math.min(5,s5w.length-1)].t0];
+const FT=EP.chat.bubbles.map(b=>AT(b.at));
+window.render=function(t){
+ SC.forEach(([id,a,b])=>S(id,t,a,b));
+ if(t<OFF.s2){if(typeof STORY!=='undefined'&&STORY.hook)STORY.hook(t);document.querySelectorAll('.fs').forEach((e,i)=>e.setAttribute('y',20+Math.sin(t*6-i*.35)*10));
+  sty('Aflag',{transform:`scale(${pop(t,0.3,.45)})`,transformOrigin:'5% 100%'});sty('Achip',{transform:`translateX(-50%) scale(${pop(t,AT(EP.hook.chipAt||0.9))}) rotate(-3deg)`});
+  const bt=AT(EP.hook.bigAt||1.5);sty('Abig',{opacity:t>=bt?1:0,transform:`scale(${pop(t,bt,.4)}) rotate(${Math.sin(t*3)*3}deg)`});
+  const kt=AT(EP.hook.kevAt||1.2);sty('Akev',{transform:`translateY(${(1-oc(seg(t,kt,kt+0.35)))*420}px)`});
+  kv('kA',Object.assign({bob:Math.sin(t*4)*3},EP.hook.kev||{}));}
+ if(t>=OFF.s2-0.3&&t<OFF.s3){let r='';for(let i=0;i<16;i++){const a=i*22.5+t*25;r+=`<path d="M0,0 L${Math.cos(a*Math.PI/180)*1100},${Math.sin(a*Math.PI/180)*1100} L${Math.cos((a+11)*Math.PI/180)*1100},${Math.sin((a+11)*Math.PI/180)*1100}z" fill="${HI}" opacity=".08"/>`}$('Brays').innerHTML=r;
+  document.querySelectorAll('.Bw').forEach((e,i)=>sty(e,{transform:`scale(${pop(t,BT[i],.3)}) rotate(${(i%2?3:-3)}deg)`}));sty('Bpron',{opacity:seg(t,SEND('s2')-0.3,SEND('s2'))});}
+ if(t>=OFF.s3-0.3&&t<OFF.s4){sty('Cchip',{transform:`translateX(-50%) scale(${pop(t,OFF.s3+0.1)})`});
+  document.querySelectorAll('.Cw').forEach((e,i)=>sty(e,{transform:`scale(${pop(t,CT[i],.3)})`}));
+  const at=CT[CT.length-1];sty('Cart',{opacity:t>=at-0.05?1:0,transform:`scale(${pop(t,at,.45)})`});
+  if(STORY.literal)STORY.literal(t,at);}
+ if(t>=OFF.s4-0.3&&t<OFF.s5)STORY.render(t);
+ if(t>=OFF.s5-0.3&&t<OFF.s6){sty('Echip',{transform:`translateX(-50%) scale(${pop(t,OFF.s5)})`});
+  document.querySelectorAll('.Ew').forEach((e,i)=>sty(e,{transform:`scale(${pop(t,ET[Math.min(i,ET.length-1)],.3)})`}));
+  const at=EP.meaning.artAt?AT(EP.meaning.artAt):ET[ET.length-1]+0.4;sty('Eart',{opacity:t>=at?1:0,transform:`translateY(${(1-ob(seg(t,at,at+0.4)))*500}px)`});
+  if(STORY.meaning)STORY.meaning(t,at);}
+ if(t>=OFF.s6-0.3&&t<OFF.s7){layoutF();document.querySelectorAll('.Fb').forEach((e,i)=>sty(e,{opacity:t>=FT[i]?1:0,transform:`scale(${pop(t,FT[i],.3)})`,transformOrigin:EP.chat.bubbles[i].side==='L'?'0 100%':'100% 100%'}));
+  const st=FT[FT.length-1]+(EP.chat.stickerDelay||0.9);sty('Fstk',{opacity:t>=st?1:0,transform:`scale(${pop(t,st,.4)}) rotate(-8deg)`});if(STORY.chat)STORY.chat(t);}
+ if(t>=OFF.s7-0.3){const s7w=W.filter(w=>w.s==='s7');const gl=document.querySelectorAll('.Gw');
+  gl.forEach((e,i)=>sty(e,{transform:`scale(${pop(t,s7w[Math.min(s7w.length-1,i*2)].t0,.3)})`}));
+  const dr=T('s7',EP.cta.dropWord||(TH.cta&&TH.cta.dropWord)||'comments')-0.4, fo=T('s7',EP.cta.followWord||(TH.cta&&TH.cta.followWord)||'follow');
+  const out=seg(t,fo-0.25,fo-0.05);sty('Garrow',{opacity:(t>=dr?1:0)*(1-out),transform:`translateY(${Math.abs(Math.sin(t*6))*-30}px) scale(${pop(t,dr)})`});
+  sty('Gcom',{opacity:(t>=dr+0.3?1:0)*(1-out),transform:`scale(${pop(t,dr+0.3)})`});
+  sty('Gkev',{opacity:t>=fo-0.1?1:0,transform:`translateY(${(1-ob(seg(t,fo-0.1,fo+0.3)))*600}px)`});
+  kv('kG',{armR:-150+Math.sin(t*12)*25,bob:Math.sin(t*6)*3,eyes:'happy'});
+  sty('Gfollow',{opacity:t>=fo?1:0,transform:`scale(${pop(t,fo,.35)*(1+0.04*Math.sin(t*8))})`});}
+ sty('brand',{transform:`scale(${pop(t,0.05,.4)})`});sty('country',{transform:`scale(${pop(t,0.5,.4)})`});
+ caption(t);
+};
+window.render(0);
+</script></body></html>
